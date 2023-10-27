@@ -1,0 +1,44 @@
+{
+  "name": "tournament-management-service",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run prod",
+    "watch:dev": "nodemon",
+    "transpile": "babel ./server --out-dir dist-server",
+    "server": "node ./dist-server/bin/www",
+    "clean": "rimraf dist-server",
+    "build": "npm-run-all clean transpile",
+    "dev": "NODE_ENV=development npm-run-all build server",
+    "prod": "NODE_ENV=production npm-run-all build server"
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
+  },
+  "dependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "express": "~4.16.1",
+    "express-async-handler": "^1.2.0",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mongoose": "^7.4.3",
+    "morgan": "~1.9.1",
+    "nodemon": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.1"
+  }
+}
